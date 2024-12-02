@@ -1,9 +1,9 @@
 /* Estilos generales */
 * {
     box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el tamaño total */
-  }
-  
-  nav a {
+}
+
+nav a {
     font-family: "Quicksand", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
@@ -14,58 +14,35 @@
     display: block; /* Asegura que el <a> ocupe todo el espacio del <li> */
     width: 100%; /* Ocupa el 100% del ancho del <li> */
     height: 100%; /* Ocupa el 100% del alto del <li> */
-  }
-  
-  .navbar {
+}
+
+.navbar {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start; /* Alinea los elementos al inicio */
     align-items: center;
     background-color: var(--color-primary);
     height: 55px;
     box-shadow: var(--shadow-md);
-  }
-  
-  .ul {
-    display: flex;
-    list-style: none;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .ul li {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: auto; /* Ocupa todo el ancho del li */
-    padding: 0;
-    margin: 0;
-  }
-  
-  .ul li a {
+}
+
+.navbar a {
     color: rgb(240, 233, 233); /* Color del texto del enlace */
     text-decoration: none;
     font-size: 1rem;
     padding: 15px 30px; /* Espaciado interno del <a> */
     display: flex;
     align-items: center; /* Centra el contenido del enlace verticalmente */
-    height: 100%; /* Hace que el enlace también ocupe el 100% de la altura del li */
-  }
-  
-  .ul li:hover {
-    background-color: var(
-      --color-secundary
-    ); /* Color de fondo al hacer hover sobre el li */
-  }
-  
-  .isActive {
+    height: 100%; /* Hace que el enlace también ocupe el 100% de la altura del <li> */
+}
+
+.navbar a:hover {
+    background-color: var(--color-secundary); /* Color de fondo al hacer hover sobre el <a> */
+}
+
+.isActive {
     font-weight: bold; /* Mantiene el texto en negrita */
     background-color: var(--color-secundary);
     border-left: 1px solid white;
     border-right: 1px solid white;
-    pointer-events: none; /* Color de fondo deseado para el li activo */
-  }
-  
+    pointer-events: none; /* Desactiva los eventos del enlace activo */
+}
