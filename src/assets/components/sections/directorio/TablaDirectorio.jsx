@@ -7,7 +7,7 @@ const TablaDirectorio = ({ section }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost/api/directorio/${section}.php`);
+        const response = await fetch(`http://localhost/backend/api/directorio/${section}.php`);
         const result = await response.json();
         setData(result);
       } catch (error) {

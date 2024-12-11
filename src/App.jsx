@@ -17,11 +17,13 @@ import Pagina404 from './assets/components/Pagina404';
 
 
 const Home = lazy(() => import('./assets/components/sections/home/Home'));
-const Empleo = lazy(() => import('./assets/components/sections/empleo/Empleo'));
-const Prestaciones = lazy(() => import('./assets/components/sections/prestaciones/Prestaciones'));
-const Personal = lazy(() => import('./assets/components/sections/personal/Personal'));
-const Observatorio = lazy(() => import('./assets/components/sections/observatorio/Observatorio'));
-const Ratel = lazy(() => import('./assets/components/sections/ratel/Ratel'));
+const Empleo = lazy(() => import('./assets/components/sections/oficina/empleo/Empleo'));
+const Prestaciones = lazy(() => import('./assets/components/sections/oficina/prestaciones/Prestaciones'));
+const Personal = lazy(() => import('./assets/components/sections/D.P./personal/Personal'));
+const Observatorio = lazy(() => import('./assets/components/sections/D.P./observatorio/Observatorio'));
+const Ratel = lazy(() => import('./assets/components/sections/D.P./ratel/Ratel'))
+const Uci = lazy(()=> import ('./assets/components/sections/D.P./UCI/Uci'))
+const Becas = lazy(()=> import ('./assets/components/sections/D.P./becas/Becas'))
 const Directorio = lazy(() => import('./assets/components/sections/directorio/Directorio'));
 
 
@@ -49,6 +51,8 @@ function App() {
                   <Route path="/personal" element={<Personal />} />
                   <Route path="/observatorio" element={<Observatorio />} />
                   <Route path="/ratel" element={<Ratel />} />  
+                  <Route path="/uci" element={<Uci />} />
+                  <Route path="/becas" element={<Becas />} />  
                   <Route path="/directorio" element={<Directorio />} />
                 </>
               <Route path="/*" element={<Pagina404 />} />

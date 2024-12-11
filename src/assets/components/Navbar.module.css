@@ -1,71 +1,127 @@
 /* Estilos generales */
 * {
-    box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el tamaño total */
-  }
+  box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el tamaño total */
+  margin: 0;
+  padding: 0;
+}
+body{
+  overflow-y: hidden;
+}
+nav a {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  text-decoration: none;
+  color: inherit; /* Mantiene el color del texto igual que el del li */
+  background-color: transparent; /* Asegúrate de que el fondo sea transparente */
+  display: block; /* Asegura que el <a> ocupe todo el espacio del <li> */
+  width: 100%; /* Ocupa el 100% del ancho del <li> */
+  height: 100%; /* Ocupa el 100% del alto del <li> */
+}
+
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: var(--color-primary);
+  height: 55px;
+  box-shadow: var(--shadow-md);
+}
+
+.ul {
+  display: flex;
+  list-style: none;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.ul li {
+  position: relative; /* Necesario para el dropdown */
+  display: flex;
+  align-items: center;
+  height: 55px;
+  justify-content: center;
+  padding: 1rem; /* Elimina el padding del li */
+  margin: 0;
+  transition: background-color 0.2s ease;
+ 
+}
+
+.ul li a {
+  color: rgb(240, 233, 233); /* Color del texto del enlace */
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 15px 30px; /* Espaciado interno del <a> */
+  display: flex;
+  align-items: center; /* Centra el contenido del enlace verticalmente */
+  height: 100%; /* Hace que el enlace también ocupe el 100% de la altura del li */
+  width: 100%; /* Hace que el enlace también ocupe el 100% del ancho del li */
+  text-align: center;
+}
+
+.ul li:hover {
+  background-color: var(--color-secundary); /* Color de fondo al hacer hover sobre el li */
+  cursor: pointer;
+}
+
+.ul li span {
+  color: rgb(240, 233, 233);
+}
+
+.isActive {
   
-  nav a {
-    font-family: "Quicksand", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
-    text-decoration: none;
-    color: inherit; /* Mantiene el color del texto igual que el del li */
-    background-color: transparent; /* Asegúrate de que el fondo sea transparente */
-    display: block; /* Asegura que el <a> ocupe todo el espacio del <li> */
-    width: 100%; /* Ocupa el 100% del ancho del <li> */
-    height: 100%; /* Ocupa el 100% del alto del <li> */
-  }
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  color: var(--color-active) !important;
+ 
+}
+
+
+
+/* Estilos para el dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  top: 56px;
+  background-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+  z-index: 1;
+  min-width: 100%;
+  padding: 0;
+  border-radius: 8px;
   
-  .navbar {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background-color: var(--color-primary);
-    height: 55px;
-    box-shadow: var(--shadow-md);
-  }
+}
+
+.dropdown:hover .dropdownContent {
+  display: block;
+}
+
+.dropdownContent li {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
   
-  .ul {
-    display: flex;
-    list-style: none;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0;
-    margin: 0;
-  }
+}
+
+.dropdownContent li:not(:last-child){
+  border-bottom: 1px solid white;
+}
+
+.dropdownContent li a {
+  padding: 0px 30px; /* Ajusta el padding para que coincida con el de los elementos principales */
+  width: 100%;
+  height: 100%;
+}
+.dropdown.user .dropdownContent {
+  right: 0; /* Alinea el dropdown de User a la derecha */
   
-  .ul li {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: auto; /* Ocupa todo el ancho del li */
-    padding: 0;
-    margin: 0;
-  }
-  
-  .ul li a {
-    color: rgb(240, 233, 233); /* Color del texto del enlace */
-    text-decoration: none;
-    font-size: 1rem;
-    padding: 15px 30px; /* Espaciado interno del <a> */
-    display: flex;
-    align-items: center; /* Centra el contenido del enlace verticalmente */
-    height: 100%; /* Hace que el enlace también ocupe el 100% de la altura del li */
-  }
-  
-  .ul li:hover {
-    background-color: var(
-      --color-secundary
-    ); /* Color de fondo al hacer hover sobre el li */
-  }
-  
-  .isActive {
-    font-weight: bold; /* Mantiene el texto en negrita */
-    background-color: var(--color-secundary);
-    border-left: 1px solid white;
-    border-right: 1px solid white;
-    pointer-events: none; /* Color de fondo deseado para el li activo */
-  }
-  
+}
