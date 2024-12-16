@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
+import Loader from '../Loader';
 import style from './Login.module.css';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setLoading(true);
 
     try {
       const response = await fetch('http://localhost/backend/api/login.php', {
@@ -27,14 +30,22 @@ const Login = () => {
 
       if (data.success) {
         login(); // Actualiza el estado de autenticación
-        navigate('/');
+        setTimeout(() => {
+          navigate('/');
+        }, 1000); // Espera 1 segundo antes de navegar
       } else {
         setError(data.message);
+        setLoading(false);
       }
     } catch (error) {
       setError('An error occurred. Please try again.');
+      setLoading(false);
     }
   };
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className={style.loginContainer}>

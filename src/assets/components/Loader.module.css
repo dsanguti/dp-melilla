@@ -1,16 +1,38 @@
 /* HTML: <div class="loader"></div> */
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
 .loader {
-    width: fit-content;
-    font-weight: bold;
-    font-family: monospace;
-    font-size: 30px;
-    color: #0000;
-    background: linear-gradient(90deg,#C02942 calc(50% + 0.5ch),#000 0) right/calc(200% + 1ch) 100%;
-    -webkit-background-clip: text;
-            background-clip: text;
-    animation: l7 2s infinite steps(11);
-  }
-  .loader:before {
-    content:"Procesando ..."
-  }
-  @keyframes l7 {to{background-position: left}}
+  width: 90px;
+  aspect-ratio: 1;
+  display: grid;
+  border: 4px solid #0000;
+  border-radius: 50%;
+  border-color: #ccc #0000;
+  animation: l16 1s infinite linear;
+}
+.loader::before,
+.loader::after {    
+  content: "";
+  grid-area: 1/1;
+  margin: 2px;
+  border: inherit;
+  border-radius: 50%;
+}
+.loader::before {
+  border-color: #F0810F #063852;
+  animation: inherit; 
+  animation-duration: .5s;
+  animation-direction: reverse;
+}
+.loader::after {
+  margin: 8px;
+}
+@keyframes l16 { 
+  100%{transform: rotate(1turn)}
+}

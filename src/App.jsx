@@ -1,4 +1,4 @@
-
+import React, { useState, useEffect } from 'react'; // Asegúrate de importar useState y useEffect
 import { AuthProvider, useAuth } from './assets/components/authentications/AuthContext';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
@@ -12,6 +12,7 @@ import Navbar from './assets/components/Navbar';
 import Tittle from './assets/components/Tittle';
 import Pagina404 from './assets/components/Pagina404';
 import Login from './assets/components/authentications/Login';
+import Salir from './assets/components/authentications/Salir';
 
 const Home = lazy(() => import('./assets/components/sections/home/Home'));
 const Empleo = lazy(() => import('./assets/components/sections/oficina/empleo/Empleo'));
@@ -30,6 +31,22 @@ const PrivateRoute = ({ element }) => {
 
 const AppContent = () => {
   const { isAuthenticated } = useAuth();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      setLoading(true); // Línea añadida
+      setTimeout(() => {
+        setLoading(false); // Línea añadida
+      }, 1000); // Espera 1 segundo antes de mostrar el contenido
+    } else {
+      setLoading(false);
+    }
+  }, [isAuthenticated]);
+
+  if (loading) {
+    return <Loader />; // Línea añadida
+  }
 
   return (
     <div className="container-app">
@@ -51,6 +68,7 @@ const AppContent = () => {
               <Route path="/becas" element={<PrivateRoute element={<Becas />} />} />
               <Route path="/directorio" element={<PrivateRoute element={<Directorio />} />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/salir" element={<Salir />} />
             </>
             <Route path="/*" element={<Pagina404 />} />
           </Routes>
