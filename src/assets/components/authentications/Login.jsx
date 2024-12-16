@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import Loader from '../Loader';
@@ -15,7 +15,6 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    setLoading(true);
 
     try {
       const response = await fetch('http://localhost/backend/api/login.php', {
@@ -29,19 +28,27 @@ const Login = () => {
       const data = await response.json();
 
       if (data.success) {
+        setLoading(true); // Muestra el Loader solo si el login es exitoso
         login(); // Actualiza el estado de autenticación
         setTimeout(() => {
           navigate('/');
         }, 1000); // Espera 1 segundo antes de navegar
       } else {
-        setError(data.message);
-        setLoading(false);
+        setError('Usuario o contraseña incorrectos'); // Cambia el mensaje de error aquí
       }
     } catch (error) {
-      setError('An error occurred. Please try again.');
-      setLoading(false);
+      setError('Ocurrió un error. Por favor, inténtalo de nuevo.');
     }
   };
+
+  useEffect(() => {
+    if (error) {
+      const errorElement = document.querySelector(`.${style.error}`);
+      if (errorElement) {
+        errorElement.classList.add(style.show);
+      }
+    }
+  }, [error]);
 
   if (loading) {
     return <Loader />;
@@ -49,31 +56,35 @@ const Login = () => {
 
   return (
     <div className={style.loginContainer}>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div className={style.formGroup}>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div className={style.formGroup}>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        {error && <p className={style.error}>{error}</p>}
-        <button type="submit">Login</button>
-      </form>
+      <div className={style.formContainer}>
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
+          <div className={style.formGroup}>
+            <label htmlFor="username">Usuario:</label>
+            <input
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+          <div className={style.formGroup}>
+            <label htmlFor="password">Contraseña:</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <div className={style.errorContainer}>
+            {error && <p className={`${style.error} ${error ? style.show : ''}`}>{error}</p>}
+          </div>
+          <button type="submit">Login</button>
+        </form>
+      </div>
     </div>
   );
 };
