@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
-include '../../db_directorio.php';
+include '../../db_dp-melilla.php';
 
 try{
 
@@ -34,4 +34,4 @@ echo json_encode(["success" => false, "message" => $e->getMessage()]);
 } finally {
 $conn->close();
 }
-?>>
+?>
