@@ -2,8 +2,7 @@
 .loginContainer {
   display: flex;
   justify-content: center;
-  align-items: start;
-  margin-top: 80px;
+  align-items: center;
   height: 100vh;
   background-image: url('../../../../public/fondo_login.jpg');
   background-size: cover;
@@ -16,7 +15,7 @@
 }
 
 .formContainer {
-  background-color: rgba(176, 198, 204, 0.9); /* Fondo blanco semitransparente */
+  background-color: rgba(195, 207, 211, 0.9); /* Fondo blanco semitransparente */
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 6px 9px rgba(0, 0, 0, 0.6); /* Sombra */

@@ -29,6 +29,13 @@ nav a {
   box-shadow: var(--shadow-md);
 }
 
+/* Estilo para ocultar el Navbar en la página de login */
+.hide-nav {
+  display: none;
+  height: 0;
+}
+
+
 .ul {
   display: flex;
   list-style: none;

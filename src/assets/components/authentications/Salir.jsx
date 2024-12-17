@@ -9,18 +9,30 @@ const Salir = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    logout();
-    setTimeout(() => {
-      setLoading(false);
-      navigate('/login');
-    }, 2000); // Espera 2 segundos antes de navegar
-  }, [logout, navigate]);
+    const timer = setTimeout(async () => {
+      try {
+        await logout(); // Realiza el logout
+      } catch (error) {
+        console.error('Logout failed', error);
+      } finally {
+        setLoading(false); // Cambia el estado a false después del logout
+      }
+    }, 2000); // Muestra el loader durante 2 segundos antes de hacer el logout
+
+    return () => clearTimeout(timer); // Limpia el timer si el componente se desmonta antes de tiempo
+  }, [logout]);
+
+  useEffect(() => {
+    if (!loading) {
+      navigate('/login'); // Redirige a login después de que el loading se haya completado
+    }
+  }, [loading, navigate]);
 
   if (loading) {
-    return <LoaderSalir />;
+    return <LoaderSalir />; // Muestra el loader mientras se espera
   }
 
-  return null;
+  return null; // No renderiza nada más una vez el estado de loading es false
 };
 
 export default Salir;

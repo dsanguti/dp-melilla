@@ -3,20 +3,32 @@ import style from "./Directorio.module.css";
 
 const TablaDirectorio = ({ section }) => {
   const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(`http://localhost/backend/api/directorio/${section}.php`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const result = await response.json();
-        setData(result);
+        if (!result.success) {
+          throw new Error(result.message || 'Error fetching data');
+        }
+        setData(result.data);
       } catch (error) {
         console.error("Error fetching data:", error);
+        setError(error.message);
       }
     };
 
     fetchData();
   }, [section]);
+
+  if (error) {
+    return <div>Error fetching data: {error}</div>;
+  }
 
   return (
     <table className={style.table}>

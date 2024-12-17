@@ -2,25 +2,36 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header('Content-Type: application/json');
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit;
+}
+
 include '../../db_directorio.php';
+
+try{
 
 $sql = "SELECT id, puesto, nombre, apellidos, telefono, extension, correo FROM directorio WHERE oficina = 'Empleo'";
 $result = $conn->query($sql);
 
 if (!$result) {
-    http_response_code(500);
-    echo json_encode(["error" => $conn->error]);
-    exit;
+    throw new Exception("Database query failed: " . $conn->error);
 }
 
 $data = array();
 if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
+    while ($row = $result->fetch_assoc()) {
         $data[] = $row;
     }
 }
 
-echo json_encode($data);
-
+echo json_encode(["success" => true, "data" => $data]);
+} catch (Exception $e) {
+http_response_code(500);
+echo json_encode(["success" => false, "message" => $e->getMessage()]);
+} finally {
 $conn->close();
-?>
+}
+?>>

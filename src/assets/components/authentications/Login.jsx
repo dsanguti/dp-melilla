@@ -10,7 +10,7 @@ const Login = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, isAuthenticated, loading: authLoading } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,32 +26,34 @@ const Login = () => {
       });
 
       const data = await response.json();
+      console.log('Response data:', data);
 
       if (data.success) {
-        setLoading(true); // Muestra el Loader solo si el login es exitoso
-        login(); // Actualiza el estado de autenticación
-        setTimeout(() => {
-          navigate('/');
-        }, 1000); // Espera 1 segundo antes de navegar
+        setLoading(true);
+        login(data.profiles);
       } else {
-        setError('Usuario o contraseña incorrectos'); // Cambia el mensaje de error aquí
+        setError('Usuario o contraseña incorrectos');
       }
     } catch (error) {
+      console.error('Error:', error);
       setError('Ocurrió un error. Por favor, inténtalo de nuevo.');
     }
   };
 
   useEffect(() => {
-    if (error) {
-      const errorElement = document.querySelector(`.${style.error}`);
-      if (errorElement) {
-        errorElement.classList.add(style.show);
-      }
+    if (isAuthenticated) {
+      setTimeout(() => {
+        navigate('/'); // Realiza la navegación después de la autenticación
+      }, 1000); // Espera 1 segundo para mostrar el loader
     }
-  }, [error]);
+  }, [isAuthenticated, navigate]);
 
-  if (loading) {
-    return <Loader />;
+  if (authLoading || loading) {
+    return <Loader />; // Muestra el Loader mientras se está procesando la autenticación
+  }
+
+  if (isAuthenticated) {
+    return null; // Si ya está autenticado, no renderiza el formulario de login
   }
 
   return (
