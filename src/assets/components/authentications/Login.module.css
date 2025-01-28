@@ -15,6 +15,7 @@
 }
 
 .formContainer {
+  margin-top: -10%;
   background-color: rgba(195, 207, 211, 0.9); /* Fondo blanco semitransparente */
   padding: 20px;
   border-radius: 10px;

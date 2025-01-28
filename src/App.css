@@ -18,6 +18,12 @@
   width: 100%;
   height: 12%;
 }
+/* Estilo para ocultar el Navbar en la página de login */
+.hide-nav {
+  display: none;
+  
+}
+
 
 .container-contenido {
   width: 100%;

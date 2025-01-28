@@ -7,6 +7,7 @@ import Login from './assets/components/authentications/Login';
 import Tittle from './assets/components/Tittle';
 import Pagina404 from './assets/components/Pagina404';
 import Salir from './assets/components/authentications/Salir';
+import ProtectedRoute from './assets/components/authentications/ProtectedRoute'; 
 
 import './App.css';
 import './index.css';
@@ -66,15 +67,33 @@ const AppContent = () => {
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<PrivateRoute element={<Home />} />} />
-            <Route path="/empleo" element={<PrivateRoute element={<Empleo />} />} />
-            <Route path="/prestaciones" element={<PrivateRoute element={<Prestaciones />} />} />
-            <Route path="/personal" element={<PrivateRoute element={<Personal />} />} />
-            <Route path="/observatorio" element={<PrivateRoute element={<Observatorio />} />} />
-            <Route path="/ratel" element={<PrivateRoute element={<Ratel />} />} />
-            <Route path="/uci" element={<PrivateRoute element={<Uci />} />} />
-            <Route path="/becas" element={<PrivateRoute element={<Becas />} />} />
-            <Route path="/sanciones" element={<PrivateRoute element={<Sanciones />} />} />
-            <Route path="/directorio" element={<PrivateRoute element={<Directorio />} />} />
+            <Route path="/empleo" element={<ProtectedRoute requiredAccess="empleo" />}>
+              <Route path="" element={<Empleo />} />
+            </Route>
+            <Route path="/prestaciones" element={<ProtectedRoute requiredAccess="prestaciones" />}>
+              <Route path="" element={<Prestaciones />} />
+            </Route>
+            <Route path="/personal" element={<ProtectedRoute requiredAccess="personal" />}>
+              <Route path="" element={<Personal />} />
+            </Route>
+            <Route path="/observatorio" element={<ProtectedRoute requiredAccess="observatorio" />}>
+              <Route path="" element={<Observatorio />} />
+            </Route>
+            <Route path="/ratel" element={<ProtectedRoute requiredAccess="ratel" />}>
+              <Route path="" element={<Ratel />} />
+            </Route>
+            <Route path="/uci" element={<ProtectedRoute requiredAccess="uci" />}>
+              <Route path="" element={<Uci />} />
+            </Route>
+            <Route path="/becas" element={<ProtectedRoute requiredAccess="becas" />}>
+              <Route path="" element={<Becas />} />
+            </Route>
+            <Route path="/sanciones" element={<ProtectedRoute requiredAccess="sanciones" />}>
+              <Route path="" element={<Sanciones />} />
+            </Route>
+            <Route path="/directorio" element={<ProtectedRoute requiredAccess="directorio" />}>
+              <Route path="" element={<Directorio />} />
+            </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/salir" element={<Salir />} />
             <Route path="/*" element={<Pagina404 />} />
