@@ -5,9 +5,12 @@ import style from "./Navbar.module.css";
 const Navbar = () => {
   const { userProfile } = useAuth();
 
+  
   const hasAccess = (profile) => {
+   
     return profile && profile !== 'sin acceso';
   };
+
 
   return (
     <nav className={style.navbar}>
@@ -106,6 +109,7 @@ const Navbar = () => {
                 </NavLink>
               </li>
             )}
+           
             {userProfile && hasAccess(userProfile.prestaciones) && (
               <li>
                 <NavLink

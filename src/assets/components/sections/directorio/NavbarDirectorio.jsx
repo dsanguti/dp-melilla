@@ -39,4 +39,4 @@ const NavbarDirectorio = ({ setSection }) => {
   );
 };
 
-export default NavbarDirectorio;
+export default NavbarDirectorio; 

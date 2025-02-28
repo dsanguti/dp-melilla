@@ -49,28 +49,30 @@ if ($ldap_bind) {
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Consulta para obtener los datos del usuario
-        $sql = "SELECT directorio, becas, ratel, observatorio, uci, personal, sanciones 
+        $sql = "SELECT directorio, becas, ratel, observatorio, uci, personal, sanciones, empleo, prestaciones, admin 
                 FROM users WHERE username = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$username]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Si el usuario existe, asignar los perfiles
+        // Asignar perfiles
         if ($user) {
+            
+            // Si el usuario existe, usamos los datos de la base de datos
             $profiles = [
                 'directorio' => $user['directorio'] ?? 'consulta',
                 'becas' => $user['becas'] ?? 'consulta',
                 'ratel' => $user['ratel'] ?? 'consulta',
                 'observatorio' => $user['observatorio'] ?? 'sin acceso',
-                'uci' => $user['uci'] ?? 'consulta',
+                'uci' => $user['uci'] ?? 'sin acceso',
                 'personal' => $user['personal'] ?? 'sin acceso',
                 'sanciones' => $user['sanciones'] ?? 'sin acceso',
-                'empleo' => $user['empleo'] ?? 'consulta',
-                'prestaciones' => $user['prestaciones'] ?? 'consulta',
+                'empleo' => $user['empleo'] === 'sin acceso' ? 'sin acceso' : 'consulta', // Verifica si es 'sin acceso'
+                'prestaciones' => $user['prestaciones'] === 'sin acceso' ? 'sin acceso' : 'consulta', // Verifica si es 'sin acceso'
                 'admin' => $user['admin'] ?? 'sin acceso'
             ];
         } else {
-            // Si el usuario no existe en la base de datos, asignar los valores predeterminados
+            // Si el usuario no existe, asignamos los valores predeterminados
             $profiles = [
                 'directorio' => 'consulta',
                 'becas' => 'consulta',

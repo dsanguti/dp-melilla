@@ -74,3 +74,27 @@ nav a {
     border-right: 1px solid white;
     pointer-events: none; /* Desactiva los eventos del enlace activo */
 }
+
+/* Añadimos estilos para el headerRowTable y header elementos */
+.headerRowTable {
+    display: flex;
+    font-weight: bold;
+    margin-bottom: 10px;
+    justify-content: center; /* Distribuye los elementos equitativamente */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+  }
+  
+
+  .containerFila{
+    display: flex;
+    justify-content: center; /* Distribuye los elementos equitativamente */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    padding: 10px 0; /* Añade un poco de relleno arriba y abajo */
+    border-bottom: 1px solid #ddd; /* Línea para separar cada fila */
+    transition: background-color ease 0.2s;
+  }
+
+  .puesto, .nombre, .apellidos, .telefono, .extension, .correo{
+    flex: 1;
+    text-align: center; /* Centra el texto */
+  }
