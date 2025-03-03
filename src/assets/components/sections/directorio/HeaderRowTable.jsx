@@ -2,15 +2,17 @@
 
 import style from "./Directorio.module.css";
 
-const HeaderRowTable = () => {
+const HeaderRowTable = ( { profile } ) => {
+  console.log("Profile in HeaderRowTable:", profile?.directorio);
   return (
     <div className={style.headerRowTable}>
-      <div className={style.puesto}>Puesto</div>
-      <div className={style.nombre}>Nombre</div>
-      <div className={style.apellidos}>Apellidos</div>
-      <div className={style.telefono}>Teléfono</div>
-      <div className={style.extension}>Extensión</div>
-      <div className={style.correo}>Correo</div> 
+      <div className={style.HeaderPuesto}>Puesto</div>
+      <div className={style.HeaderNombre}>Nombre</div>
+      <div className={style.HeaderApellidos}>Apellidos</div>
+      <div className={style.HeaderTelefono}>Teléfono</div>
+      <div className={style.HeaderExtension}>Extensión</div>
+      <div className={style.HeaderCorreo}>Correo</div> 
+      {profile?.directorio === "editar" && <div className={style.HeaderEditar}>Editar</div>}
     </div>
   );
 };

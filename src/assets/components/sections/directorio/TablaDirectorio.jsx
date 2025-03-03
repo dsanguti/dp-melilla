@@ -3,7 +3,7 @@ import HeaderRowTable from "./HeaderRowTable";
 import ListRowTable from "./ListRowTable";
 import style from "./Directorio.module.css";
 
-const TablaDirectorio = ({ section }) => {
+const TablaDirectorio = ({ section, userProfile }) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true); // ✅ Ahora 'loading' está definido
@@ -45,8 +45,8 @@ const TablaDirectorio = ({ section }) => {
 
   return (
     <div className={style.tableContainer}>
-      <HeaderRowTable />
-      <ListRowTable data={data} error={error} loading={loading} />
+      <HeaderRowTable profile={userProfile} />
+      <ListRowTable data={data} error={error} loading={loading} userProfile={userProfile} />
     </div>
   );
 };

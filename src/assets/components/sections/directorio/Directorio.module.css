@@ -45,9 +45,7 @@ nav a {
     height: 100%; /* Hace que el enlace también ocupe el 100% de la altura del <li> */
 }
 
-.navbar a:hover {
-    background-color: var(--color-secundary); /* Color de fondo al hacer hover sobre el <a> */
-}
+
 .navButton {
     background: none;
     border: none;
@@ -60,13 +58,19 @@ nav a {
     display: inline-block;
     font-size: 1rem;
     border-radius: 0px;
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0;
   }
-
 
   
-  .navButton:hover {
+.navButton:hover {
     background-color: var(--color-secundary);
-  }
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    box-shadow: none;
+}
 .isActive {
     font-weight: bold; /* Mantiene el texto en negrita */
     background-color: var(--color-secundary);
@@ -80,10 +84,24 @@ nav a {
     display: flex;
     font-weight: bold;
     margin-bottom: 10px;
+    padding-right: 15px;
+padding-left: 15px;
     justify-content: center; /* Distribuye los elementos equitativamente */
     width: 100%; /* Asegura que ocupe todo el ancho disponible */
+   
   }
   
+.containerListRow{
+max-height: 550px;
+overflow-y: auto;
+width: 100%;
+overflow-x: hidden;
+padding-right: 15px;
+padding-left: 15px;
+border: 1px solid black;
+border-radius: 5px;
+box-shadow: 11px 9px 8px -8px rgba(0,0,0,0.45);
+}
 
   .containerFila{
     display: flex;
@@ -94,7 +112,28 @@ nav a {
     transition: background-color ease 0.2s;
   }
 
-  .puesto, .nombre, .apellidos, .telefono, .extension, .correo{
+
+
+  .puesto, .nombre, .apellidos, .telefono, .extension, .correo, .HeaderPuesto, .HeaderNombre, .HeaderApellidos, .HeaderTelefono, .HeaderExtension, .HeaderCorreo, .HeaderEditar {
     flex: 1;
+    min-width: 170px;
     text-align: center; /* Centra el texto */
   }
+/* Media queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .puesto, .nombre, .apellidos, .telefono, .extension, .correo, .HeaderPuesto, .HeaderNombre, .HeaderApellidos, .HeaderTelefono, .HeaderExtension, .HeaderCorreo, .HeaderEditar {
+      min-width: 100px; /* Ajusta el ancho mínimo para pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .puesto, .nombre, .apellidos, .telefono, .extension, .correo, .HeaderPuesto, .HeaderNombre, .HeaderApellidos, .HeaderTelefono, .HeaderExtension, .HeaderCorreo, .HeaderEditar {
+      flex: 1 1 100%; /* Hace que cada columna ocupe el 100% del ancho */
+      min-width: auto; /* Elimina el ancho mínimo */
+  }
+
+  .containerFila {
+      flex-direction: column; /* Cambia la dirección de los elementos a columna */
+      align-items: flex-start; /* Alinea los elementos al inicio */
+  }
+}
