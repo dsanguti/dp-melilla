@@ -90,6 +90,9 @@ nav a {
   border: 1px solid black; /* Línea separadora */
   border-radius: 5px;
   box-shadow: 11px 9px 8px -8px rgba(0, 0, 0, 0.45);
+  box-sizing: border-box;
+  overflow: hidden;
+  padding-right: 13px;
 }
 
 .containerListRow {
@@ -110,22 +113,28 @@ nav a {
   transition: background-color ease 0.2s;
 }
 
-/* Asegurar que cada columna tiene el mismo tamaño */
-.puesto, .nombre, .apellidos, .telefono, .extension, .correo, .editar,
-.HeaderPuesto, .HeaderNombre, .HeaderApellidos, .HeaderTelefono, .HeaderExtension, .HeaderCorreo, .HeaderEditar {
-  flex: 1; /* Igual distribución del espacio */
+/* Asegurar que cada columna tiene el mismo tamaño y contenido centrado */
+.puesto, .nombre, .apellidos, .telefono, .extension, .correo,
+.HeaderPuesto, .HeaderNombre, .HeaderApellidos, .HeaderTelefono, .HeaderExtension, .HeaderCorreo {
+  flex: 1; /* Todas las columnas ocupan el mismo espacio */
   min-width: 150px;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
- 
 }
 
-.edit{
-  margin-left: 25px;
-  margin-right: 10px;
+/* Ajuste especial para la columna "Editar" */
+.editar, .HeaderEditar {
+  flex: 0.5; /* Más pequeña para que no empuje otras columnas */
+  min-width: 100px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+
 
 /* Media queries para pantallas más pequeñas */
 @media (max-width: 768px) {
