@@ -30,8 +30,8 @@ const RowTable = ({ puesto, nombre, apellidos, telefono, extension, correo, user
         <CorreoField correo={correo} />
       </div>
       {userProfile.directorio === "editar" && (
-        <div className={style.icons}>
-          <Edit />
+        <div className={style.editar}>
+          <Edit className={style.edit} />
           <Delete />
         </div>)}
    
