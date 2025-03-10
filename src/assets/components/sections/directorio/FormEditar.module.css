@@ -1,0 +1,50 @@
+/* Form.module.css */
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .form .row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .form .column {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  .form .column:last-child {
+    margin-right: 0;
+  }
+  
+  .form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form input {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%; /* Asegura que los inputs ocupen todo el espacio disponible */
+  }
+  
+  .form button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Asegura que el botón ocupe todo el ancho */
+  }
+  
+  .form button:hover {
+    background-color: #45a049;
+  }
+  

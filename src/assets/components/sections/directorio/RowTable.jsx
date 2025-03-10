@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import style from "./Directorio.module.css";
 import PuestoField from "./PuestoField";
 import NombreField from "./NombreField";
@@ -7,8 +8,20 @@ import ExtensionField from "./ExtensionField";
 import CorreoField from "./CorreoField";    
 import Edit from "../../icons/Edit";
 import Delete from "../../icons/Delete";
+import Modal from '../../Modal'; // Importamos el modal
+import FormEditar from './FormEditar';
 
 const RowTable = ({ puesto, nombre, apellidos, telefono, extension, correo, userProfile }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false); // Estado para controlar si el modal está abierto
+  const [formData, setFormData] = useState({ puesto, nombre, apellidos, telefono, extension, correo }); // Estado para los datos del formulario
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   return (
     <div className={style.containerFila}>
       <div className={style.puesto}>
@@ -31,10 +44,14 @@ const RowTable = ({ puesto, nombre, apellidos, telefono, extension, correo, user
       </div>
       {userProfile.directorio === "editar" && (
         <div className={style.editar}>
-          <Edit className={style.edit} />
-          <Delete />
-        </div>)}
-   
+          <Edit className={style.edit} onClick={openModal} />
+          <Delete className={style.delete} />
+        </div>
+      )}
+
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+       <FormEditar formData={formData} handleInputChange={handleInputChange}  />
+      </Modal>
     </div>
   );
 };

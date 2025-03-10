@@ -134,6 +134,26 @@ nav a {
   justify-content: center;
 }
 
+/* Estilos para los iconos de edición*/
+.delete{
+  color: rgb(189, 88, 88);
+  transition: color ease 0.2s , transform ease 0.2s;
+}
+.delete:hover{
+  color: red;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.edit{
+  color:rgb(108, 180, 108);
+  transition: color ease 0.2s , transform ease 0.2s;
+}
+.edit:hover{
+  color: green;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
 
 
 /* Media queries para pantallas más pequeñas */

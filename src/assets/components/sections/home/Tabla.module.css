@@ -1,0 +1,74 @@
+/* Estilos para la tabla de directorio */
+.table-container {
+    width: 100%;
+  }
+  
+  .headerRowTable {
+    display: flex;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding: 10px 0;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 11px 9px 8px -8px rgba(0, 0, 0, 0.45);
+    background: white;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding-right: 15px;
+  }
+  
+  .containerListRow {
+    max-height: 550px;
+    overflow-y: auto;
+    width: 100%;
+    overflow-x: hidden;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 11px 9px 8px -8px rgba(0, 0, 0, 0.45);
+    box-sizing: border-box;
+  }
+  
+  .containerFila {
+    display: flex;
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    transition: background-color ease 0.2s;
+    box-sizing: border-box;
+  }
+  
+  .cell {
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Ajustes específicos para la columna de "editar" */
+  .editar {
+    flex: 0.5;
+    min-width: 100px;
+  }
+  
+  /* Media queries */
+  @media (max-width: 768px) {
+    .cell {
+      min-width: 100px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .cell {
+      flex: 1 1 100%;
+      min-width: auto;
+    }
+  
+    .containerFila {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  
