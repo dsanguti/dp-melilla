@@ -121,8 +121,11 @@ nav a {
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
-
+.correo, .HeaderCorreo{
+  padding-right: 25px;
+}
 /* Ajuste especial para la columna "Editar" */
 .editar, .HeaderEditar {
   flex: 0.5; /* Más pequeña para que no empuje otras columnas */
