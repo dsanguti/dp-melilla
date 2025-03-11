@@ -7,8 +7,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-    padding: 20px;
+    padding: 10px;
     gap: 20px;
 }
 
@@ -96,7 +95,7 @@ nav a {
 }
 
 .containerListRow {
-  max-height: 550px;
+  max-height: 510px;
   overflow-y: scroll;
   width: calc(100% + 17px);
   overflow-x: hidden;

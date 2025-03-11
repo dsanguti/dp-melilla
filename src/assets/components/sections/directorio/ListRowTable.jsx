@@ -1,7 +1,7 @@
 import style from "./Directorio.module.css";
 import RowTable from "./RowTable";
 
-const ListRowTable = ({ data = [], error, loading, userProfile }) => {
+const ListRowTable = ({ data = [], error, loading, userProfile, fetchData }) => {
   if (loading) return <p>Cargando directorio...</p>;
   if (error) return <p>Error al cargar el directorio: {error}</p>;
   if (!Array.isArray(data) || data.length === 0) return <p>No hay registros en el directorio</p>;
@@ -11,6 +11,7 @@ const ListRowTable = ({ data = [], error, loading, userProfile }) => {
       {data.map((item) => (
         <RowTable
           key={item.id} // Asumiendo que cada item tiene un campo 'id'
+          id={item.id}
           puesto={item.puesto}
           nombre={item.nombre}
           apellidos={item.apellidos}
@@ -18,6 +19,7 @@ const ListRowTable = ({ data = [], error, loading, userProfile }) => {
           extension={item.extension}
           correo={item.correo}
           userProfile={userProfile}
+          fetchData={fetchData}
         />
       ))}
     </div>
@@ -25,4 +27,3 @@ const ListRowTable = ({ data = [], error, loading, userProfile }) => {
 };
 
 export default ListRowTable;
-

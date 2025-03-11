@@ -3,12 +3,11 @@ import HeaderRowTable from "./HeaderRowTable";
 import ListRowTable from "./ListRowTable";
 import style from "./Directorio.module.css";
 
-const TablaDirectorio = ({ section, userProfile }) => {
-  const [data, setData] = useState([]);
+const TablaDirectorio = ({ section, userProfile, data, fetchData }) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true); // ✅ Ahora 'loading' está definido
 
-  const fetchData = async () => {
+  const fetchDataInternal = async () => {
     setLoading(true); // ✅ Indicamos que está cargando antes de la petición
     setError(null);
     try {
@@ -30,7 +29,7 @@ const TablaDirectorio = ({ section, userProfile }) => {
       if (!result.success) {
         throw new Error(result.message || "Error fetching data");
       }
-      setData(result.data);
+      fetchData(result.data); // Actualizar los datos en el componente padre
     } catch (error) {
       console.error("Error fetching data:", error);
       setError(error.message);
@@ -40,13 +39,13 @@ const TablaDirectorio = ({ section, userProfile }) => {
   };
 
   useEffect(() => {
-    fetchData();
+    fetchDataInternal();
   }, [section]);
 
   return (
     <div className={style.tableContainer}>
       <HeaderRowTable profile={userProfile} />
-      <ListRowTable data={data} error={error} loading={loading} userProfile={userProfile} />
+      <ListRowTable data={data} error={error} loading={loading} userProfile={userProfile} fetchData={fetchDataInternal} />
     </div>
   );
 };
