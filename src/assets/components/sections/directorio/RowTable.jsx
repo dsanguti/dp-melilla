@@ -10,6 +10,8 @@ import Edit from "../../icons/Edit";
 import Delete from "../../icons/Delete";
 import Modal from '../../Modal'; // Importamos el modal
 import FormEditar from './FormEditar';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RowTable = ({ id, puesto, nombre, apellidos, telefono, extension, correo, userProfile, fetchData }) => {
   const [isModalOpen, setIsModalOpen] = useState(false); // Estado para controlar si el modal está abierto
@@ -40,14 +42,23 @@ const RowTable = ({ id, puesto, nombre, apellidos, telefono, extension, correo, 
       });
       const result = await response.json();
       if (result.success) {
-        alert('Cambios guardados exitosamente');
+        toast.success('Cambios guardados correctamente', {
+          autoClose:2000,
+          position:"bottom-right",
+        });
         closeModal();
         fetchData(); // Actualizar los datos después de guardar
       } else {
-        alert('Error al guardar los cambios: ' + result.message);
+        toast.error('Error al guardar los cambios: ' + result.message, {
+          autoClose:3000,
+          position:"bottom-right",
+        });
       }
     } catch (error) {
-      alert('Error al conectar con el servidor: ' + error.message);
+      toast.error('Error al conectar con el servidor: ' + error.message, {
+        autoClose:3000,
+        position:"bottom-right",
+      });
     }
   };
 

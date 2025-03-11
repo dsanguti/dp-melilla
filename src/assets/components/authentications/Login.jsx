@@ -84,7 +84,7 @@ const Login = () => {
           <div className={style.errorContainer}>
             {error && <p className={`${style.error} ${error ? style.show : ''}`}>{error}</p>}
           </div>
-          <button type="submit">Login</button>
+          <button className={style.button} type="submit">Login</button>
         </form>
       </div>
     </div>

@@ -40,7 +40,7 @@
   box-sizing: border-box;
 }
 
-button {
+.button {
   width: 100%;
   padding: 10px;
   background-color: #063852;
@@ -52,7 +52,7 @@ button {
   box-shadow: 0 0 0 2px transparent; 
 }
 
-button:hover {
+.button:hover {
   color: #063852;
   background-color: #eeac6a;
   box-shadow: 0 0 0 2px #063852; 

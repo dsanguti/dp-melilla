@@ -8,6 +8,9 @@ import Tittle from './assets/components/Tittle';
 import Pagina404 from './assets/components/Pagina404';
 import Salir from './assets/components/authentications/Salir';
 import ProtectedRoute from './assets/components/authentications/ProtectedRoute'; 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 import './App.css';
 import './index.css';
@@ -100,6 +103,7 @@ const AppContent = () => {
           </Routes>
         </Suspense>
       </div>
+      <ToastContainer />
     </div>
   );
 };
