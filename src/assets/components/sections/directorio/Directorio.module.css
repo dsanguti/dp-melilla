@@ -136,6 +136,34 @@ nav a {
   justify-content: center;
 }
 
+/* Estilo para el icono de añadir usuario al directorio*/
+
+.AddUserIconContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border: 1px solid black;
+  border-radius: 3px;
+  transition: border-radius 0.6s ease;
+}
+
+.AddUserIconContainer:hover{
+  background-color: #00293C;
+  cursor: pointer;
+  border-radius: 45px;
+}
+
+.AddUserIconContainer:hover .AddUserIcon{
+  color: white;
+}
+
+.AddUserIcon{
+color: #00293C;
+
+}
+
 /* Estilos para los iconos de edición*/
 .delete{
   color: rgb(189, 88, 88);

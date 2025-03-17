@@ -27,10 +27,12 @@ try {
     $telefono = $data['telefono'];
     $extension = $data['extension'];
     $correo = $data['correo'];
+    $oficina = $data['oficina']; // Añadido campo oficina
 
-    $sql = "INSERT INTO directorio (puesto, nombre, apellidos, telefono, extension, correo) VALUES (?, ?, ?, ?, ?, ?)";
+    // Asegúrate de que la tabla 'directorio' tenga el campo 'oficina'
+    $sql = "INSERT INTO directorio (puesto, nombre, apellidos, telefono, extension, correo, oficina) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssss", $puesto, $nombre, $apellidos, $telefono, $extension, $correo);
+    $stmt->bind_param("sssssss", $puesto, $nombre, $apellidos, $telefono, $extension, $correo, $oficina);
 
     if ($stmt->execute()) {
         echo json_encode(["success" => true, "id" => $conn->insert_id]);

@@ -8,7 +8,8 @@ const FormAgregarUserDirectorio = ({ handleSave }) => {
     apellidos: '',
     telefono: '',
     extension: '',
-    correo: ''
+    correo: '',
+    oficina: ''
   });
 
   const handleChange = (event) => {
@@ -32,6 +33,7 @@ const FormAgregarUserDirectorio = ({ handleSave }) => {
 
       {/* Fila para el puesto */}
       <div className={style.row}>
+        <div className={style.column}>
         <label>Puesto</label>
         <input
           type="text"
@@ -41,6 +43,7 @@ const FormAgregarUserDirectorio = ({ handleSave }) => {
           placeholder="Ingrese el puesto"
           required
         />
+        </div>
       </div>
 
       {/* Fila para nombre y apellidos en la misma línea */}
@@ -94,17 +97,34 @@ const FormAgregarUserDirectorio = ({ handleSave }) => {
         </div>
       </div>
 
-      {/* Fila para el correo */}
+      {/* Fila para el correo y oficina en la misma línea */}
       <div className={style.row}>
-        <label>Correo</label>
-        <input
-          type="email"
-          name="correo"
-          value={formState.correo}
-          onChange={handleChange}
-          placeholder="Ingrese el correo electrónico"
-          required
-        />
+        <div className={style.column}>
+          <label>Correo</label>
+          <input
+            type="email"
+            name="correo"
+            value={formState.correo}
+            onChange={handleChange}
+            placeholder="Ingrese el correo electrónico"
+            required
+          />
+        </div>
+        <div className={`${style.column} ${style.oficinaContainer}`}>
+          <label>Oficina</label>
+          <select
+            name="oficina"
+            value={formState.oficina}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Seleccione una opción</option>
+            <option value="Empleo">Empleo</option>
+            <option value="Prestaciones">Prestaciones</option>
+            <option value="D.P.">D.P.</option>
+            <option value="COE">COE</option>
+          </select>
+        </div>
       </div>
 
       <div>

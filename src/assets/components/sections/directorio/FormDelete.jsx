@@ -16,8 +16,6 @@ const FormDelete = ({ formData, handleDelete, handleCancel }) => {
         <div className={style.userInfo}>
           <p><strong>Puesto:</strong> {formData.puesto}</p>
           <p><strong>Nombre:</strong> {formData.nombre} {formData.apellidos}</p>
-          <p><strong>Teléfono:</strong> {formData.telefono} {formData.extension ? `(Ext. ${formData.extension})` : ''}</p>
-          <p><strong>Correo:</strong> {formData.correo}</p>
         </div>
         
         <p className={style.warningText}>
