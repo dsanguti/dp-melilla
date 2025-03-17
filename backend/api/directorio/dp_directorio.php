@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 include '../../db_dp-melilla.php';
 
 try {
-    $sql = "SELECT id, puesto, nombre, apellidos, telefono, extension, correo FROM directorio WHERE oficina = 'D.P.'";
+    $sql = "SELECT id, puesto, nombre, apellidos, telefono, extension, correo, oficina FROM directorio WHERE oficina = 'D.P.'";
     $result = $conn->query($sql);
 
     if (!$result) {

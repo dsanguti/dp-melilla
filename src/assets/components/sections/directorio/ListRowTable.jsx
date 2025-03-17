@@ -18,6 +18,7 @@ const ListRowTable = ({ data = [], error, loading, userProfile, fetchData }) => 
           telefono={item.telefono}
           extension={item.extension}
           correo={item.correo}
+          oficina = {item.oficina}
           userProfile={userProfile}
           fetchData={fetchData}
         />

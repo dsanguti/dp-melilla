@@ -1,27 +1,28 @@
-/* Form.module.css */
+/* FormAgregarUserDirectorio.module.css */
 .form {
     display: flex;
     flex-direction: column;
-    padding-top:0px;
+    padding-top: 0px;
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 20px;
   }
-
+  
   .formTitle {
     text-align: center;
     margin-bottom: 10px;
     color: var(--color-primary);
     font-size: 24px;
     font-weight: bold;
-}
+  }
   
   .form .row {
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
   }
-  .form .row:first-child{
+  
+  .form .row:first-child {
     margin-bottom: 30px;
     align-items: center;
     justify-content: center;
@@ -53,26 +54,11 @@
     width: 100%; /* Asegura que los inputs ocupen todo el espacio disponible */
   }
   
-  /* Nueva clase para el campo vertical dentro de una columna */
-  .verticalField {
-    display: flex;
-    flex-direction: column;
+  .form input::placeholder {
+    color: #aaa;
+    font-style: italic;
   }
-
-  .verticalField label {
-    margin-bottom: 5px;
-  }
-
-  .form select {
-    padding: 8px;
-    font-size: 16px;
-    text-align: center;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    width: 100%;
-  }
-
+  
   .form button {
     padding: 10px;
     font-size: 16px;
@@ -87,4 +73,3 @@
   .form button:hover {
     background-color: #45a049;
   }
-  

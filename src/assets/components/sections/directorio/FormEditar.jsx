@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import style from './FormEditar.module.css'; // Asegúrate de que el archivo CSS esté configurado adecuadamente
+import style from './FormEditar.module.css'; 
 
 const FormEditar = ({ formData, handleInputChange, handleSave }) => {
   const [formState, setFormState] = useState(formData);
-
+  
   useEffect(() => {
     setFormState(formData);
   }, [formData]);
-
+  
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
@@ -16,7 +16,7 @@ const FormEditar = ({ formData, handleInputChange, handleSave }) => {
     });
     handleInputChange(event); // Actualizar el estado en el componente padre
   };
-
+  
   return (
     <form className={style.form} onSubmit={(e) => { e.preventDefault(); handleSave(); }}>
       <div className={style.row}>
@@ -24,7 +24,7 @@ const FormEditar = ({ formData, handleInputChange, handleSave }) => {
       </div>
       {/* Campo oculto para el ID */}
       <input type="hidden" name="id" value={formState.id} />
-
+      
       {/* Fila para el puesto */}
       <div className={style.row}>
         <label>Puesto</label>
@@ -35,7 +35,7 @@ const FormEditar = ({ formData, handleInputChange, handleSave }) => {
           onChange={handleChange}
         />
       </div>
-
+      
       {/* Fila para nombre y apellidos en la misma línea */}
       <div className={style.row}>
         <div className={style.column}>
@@ -57,7 +57,7 @@ const FormEditar = ({ formData, handleInputChange, handleSave }) => {
           />
         </div>
       </div>
-
+      
       {/* Fila para teléfono y extensión en la misma línea */}
       <div className={style.row}>
         <div className={style.column}>
@@ -79,18 +79,40 @@ const FormEditar = ({ formData, handleInputChange, handleSave }) => {
           />
         </div>
       </div>
-
-      {/* Fila para el correo */}
+      
+      {/* Fila para el correo y oficina */}
       <div className={style.row}>
-        <label>Correo</label>
-        <input
-          type="email"
-          name="correo"
-          value={formState.correo}
-          onChange={handleChange}
-        />
+        <div className={style.column}>
+          <div className={style.formField}>
+            <label>Correo</label>
+            <input
+              type="email"
+              name="correo"
+              value={formState.correo}
+              onChange={handleChange}
+            />
+          </div>
+        </div> 
+        <div className={style.column}>
+          <div className={style.formField}>
+            <label>Oficina</label>
+            <select
+              name="oficina"
+              value={formState.oficina || ''}
+              onChange={handleChange}
+              className={style.selectField}
+            >
+              <option value="">Seleccione una oficina</option>
+              <option value="Empleo">Empleo</option>
+              <option value="Prestaciones">Prestaciones</option>
+              <option value="D.P.">D.P.</option>
+              <option value="COE">COE</option>
+            </select>
+          </div>
+        </div>
       </div>
-
+      
+      {/* Botón para guardar cambios */}
       <div>
         <button type="submit">Guardar cambios</button>
       </div>

@@ -37,7 +37,7 @@ const Directorio = () => {
 
   return (
     <div className={style.containerDirectorio}>
-      <NavbarDirectorio className={style.containerNavbarDirectorio} setSection={setSection} />
+      <NavbarDirectorio className={style.containerNavbarDirectorio} setSection={setSection} userProfile={userProfile} />
       <TablaDirectorio className={style.containerTablaDirectorio} section={section} userProfile={userProfile} data={data} fetchData={fetchData} />
     </div>
   );

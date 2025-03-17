@@ -16,28 +16,26 @@ include '../../db_dp-melilla.php';
 
 try {
     $data = json_decode(file_get_contents('php://input'), true);
-    
+
     if (!$data) {
         throw new Exception("No data received");
     }
-    
-    $id = $data['id'];
+
     $puesto = $data['puesto'];
     $nombre = $data['nombre'];
     $apellidos = $data['apellidos'];
     $telefono = $data['telefono'];
     $extension = $data['extension'];
     $correo = $data['correo'];
-    $oficina = $data['oficina'];
-    
-    $sql = "UPDATE directorio SET puesto=?, nombre=?, apellidos=?, telefono=?, extension=?, correo=?, oficina=? WHERE id=?";
+
+    $sql = "INSERT INTO directorio (puesto, nombre, apellidos, telefono, extension, correo) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssssi", $puesto, $nombre, $apellidos, $telefono, $extension, $correo, $oficina, $id);
-    
+    $stmt->bind_param("ssssss", $puesto, $nombre, $apellidos, $telefono, $extension, $correo);
+
     if ($stmt->execute()) {
-        echo json_encode(["success" => true]);
+        echo json_encode(["success" => true, "id" => $conn->insert_id]);
     } else {
-        throw new Exception("Database update failed: " . $stmt->error);
+        throw new Exception("Database insertion failed: " . $stmt->error);
     }
 } catch (Exception $e) {
     http_response_code(500);
