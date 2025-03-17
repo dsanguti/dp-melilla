@@ -3,6 +3,7 @@ import style from './FormAgregarUserDirectorio.module.css';
 
 const FormAgregarUserDirectorio = ({ handleSave }) => {
   const [formState, setFormState] = useState({
+    orden: '',
     puesto: '',
     nombre: '',
     apellidos: '',
@@ -43,6 +44,21 @@ const FormAgregarUserDirectorio = ({ handleSave }) => {
           placeholder="Ingrese el puesto"
           required
         />
+        </div>
+      </div>
+
+      {/* Fila para el orden */}
+      <div className={style.row}>
+        <div className={style.column}>
+          <label>Orden</label>
+          <input
+            type="number"
+            name="orden"
+            value={formState.orden}
+            onChange={handleChange}
+            placeholder="Ingrese el orden"
+            required
+          />
         </div>
       </div>
 

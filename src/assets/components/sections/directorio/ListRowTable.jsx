@@ -12,6 +12,7 @@ const ListRowTable = ({ data = [], error, loading, userProfile, fetchData }) => 
         <RowTable
           key={item.id} // Asumiendo que cada item tiene un campo 'id'
           id={item.id}
+          orden={item.orden}
           puesto={item.puesto}
           nombre={item.nombre}
           apellidos={item.apellidos}

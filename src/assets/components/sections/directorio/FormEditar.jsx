@@ -35,6 +35,18 @@ const FormEditar = ({ formData, handleInputChange, handleSave }) => {
           onChange={handleChange}
         />
       </div>
+
+    {/* Fila para el orden */} 
+      <div className={style.row}>
+        <label>Orden</label>
+        <input
+          type="number"
+          name="orden"
+          value={formState.orden}
+          onChange={handleChange}
+        />
+
+      </div>
       
       {/* Fila para nombre y apellidos en la misma línea */}
       <div className={style.row}>

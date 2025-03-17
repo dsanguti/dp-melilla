@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import style from "./Directorio.module.css";
+import OrdenField from "./OrdenField";
 import PuestoField from "./PuestoField";
 import NombreField from "./NombreField";
 import ApellidosField from "./ApellidosField";
@@ -15,24 +16,24 @@ import FormDelete from './FormDelete';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const RowTable = ({ id, puesto, nombre, apellidos, telefono, extension, correo, oficina, userProfile, fetchData }) => {
+const RowTable = ({ id, orden, puesto, nombre, apellidos, telefono, extension, correo, oficina, userProfile, fetchData }) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [formData, setFormData] = useState({ id, puesto, nombre, apellidos, telefono, extension, correo, oficina });
+  const [formData, setFormData] = useState({ id, orden, puesto, nombre, apellidos, telefono, extension, correo, oficina });
 
   useEffect(() => {
-    setFormData({ id, puesto, nombre, apellidos, telefono, extension, correo, oficina });
-  }, [id, puesto, nombre, apellidos, telefono, extension, correo, oficina]);
+    setFormData({ id, orden, puesto, nombre, apellidos, telefono, extension, correo, oficina });
+  }, [id, orden, puesto, nombre, apellidos, telefono, extension, correo, oficina]);
 
   const openEditModal = () => {
-    setFormData({ id, puesto, nombre, apellidos, telefono, extension, correo, oficina });
+    setFormData({ id, orden, puesto, nombre, apellidos, telefono, extension, correo, oficina });
     setIsEditModalOpen(true);
   };
 
   const closeEditModal = () => setIsEditModalOpen(false);
 
   const openDeleteModal = () => {
-    setFormData({ id, puesto, nombre, apellidos, telefono, extension, correo, oficina });
+    setFormData({ id, orden, puesto, nombre, apellidos, telefono, extension, correo, oficina });
     setIsDeleteModalOpen(true);
   };
 
@@ -106,6 +107,11 @@ const RowTable = ({ id, puesto, nombre, apellidos, telefono, extension, correo, 
 
   return (
     <div className={style.containerFila}>
+       {userProfile.directorio === "editar" && (
+        <div className={style.orden}>
+          <OrdenField orden={orden} />
+        </div>
+      )}
       <div className={style.puesto}>
         <PuestoField puesto={puesto} />
       </div>

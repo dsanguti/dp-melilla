@@ -6,6 +6,7 @@ const HeaderRowTable = ( { profile } ) => {
   console.log("Profile in HeaderRowTable:", profile?.directorio);
   return (
     <div className={style.headerRowTable}>
+      {profile?.directorio === "editar" && <div className={style.HeaderOrden}>Orden</div>}
       <div className={style.HeaderPuesto}>Puesto</div>
       <div className={style.HeaderNombre}>Nombre</div>
       <div className={style.HeaderApellidos}>Apellidos</div>

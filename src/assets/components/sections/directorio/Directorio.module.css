@@ -113,8 +113,8 @@ nav a {
 }
 
 /* Asegurar que cada columna tiene el mismo tamaño y contenido centrado */
-.puesto, .nombre, .apellidos, .telefono, .extension, .correo,
-.HeaderPuesto, .HeaderNombre, .HeaderApellidos, .HeaderTelefono, .HeaderExtension, .HeaderCorreo {
+.orden, .puesto, .nombre, .apellidos, .telefono, .extension, .correo,
+.HeaderPuesto, .HeaderNombre, .HeaderApellidos, .HeaderTelefono, .HeaderExtension, .HeaderCorreo, .HeaderOrden {
   flex: 1; /* Todas las columnas ocupan el mismo espacio */
   min-width: 150px;
   text-align: center;
@@ -188,15 +188,15 @@ color: #00293C;
 
 /* Media queries para pantallas más pequeñas */
 @media (max-width: 768px) {
-  .puesto, .nombre, .apellidos, .telefono, .extension, .correo, .editar,
-  .HeaderPuesto, .HeaderNombre, .HeaderApellidos, .HeaderTelefono, .HeaderExtension, .HeaderCorreo, .HeaderEditar {
+  .orden, .puesto, .nombre, .apellidos, .telefono, .extension, .correo, .editar,
+  .HeaderPuesto, .HeaderNombre, .HeaderApellidos, .HeaderTelefono, .HeaderExtension, .HeaderCorreo, .HeaderEditar, .HeaderOrden {
       min-width: 100px;
   }
 }
 
 @media (max-width: 480px) {
-  .puesto, .nombre, .apellidos, .telefono, .extension, .correo, .editar,
-  .HeaderPuesto, .HeaderNombre, .HeaderApellidos, .HeaderTelefono, .HeaderExtension, .HeaderCorreo, .HeaderEditar {
+  .orden, .puesto, .nombre, .apellidos, .telefono, .extension, .correo, .editar,
+  .HeaderPuesto, .HeaderNombre, .HeaderApellidos, .HeaderTelefono, .HeaderExtension, .HeaderCorreo, .HeaderEditar, .HeaderOrden {
       flex: 1 1 100%;
       min-width: auto;
   }
